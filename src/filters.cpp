@@ -27,6 +27,10 @@ double BWFilter2::compute(double input, ros::Duration dt)
   //double cutoff_frequency = 15; //TODO make cutoff frequency parameter
   double c;
 
+  input_[2] = input_[1];
+  input_[1] = input_[0];
+  input_[0] = input;
+
   // Calculate the derivative error
   if (dt.toSec() > 0.0)
   {
