@@ -304,7 +304,7 @@ public:
   double computeCommand(double error, ros::Duration dt);
 
   //2018-02-17, revise the PID to have low pass filter for the D term
-  double computeCommand(double error, ros::Duration dt, bool d_low_pass, filters::BWFilter2 bw_filter2);
+  double computeCommand(double error, ros::Duration dt, bool d_low_pass, filters::BWFilter2 &bw_filter2);
 
   /*!
    * \brief Set the PID error and compute the PID command with nonuniform

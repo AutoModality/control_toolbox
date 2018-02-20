@@ -59,6 +59,7 @@ class BWFilter2
 {
 public:
 	BWFilter2();
+	BWFilter2(double cutoff_frequency);
 	~BWFilter2();
 
 	double compute(double input, ros::Duration dt);

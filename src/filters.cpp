@@ -12,7 +12,14 @@ BWFilter2::BWFilter2()
 	output_[1] = 0.0;
 	output_[2] = 0.0;
 
-	cutoff_frequency_ = 15;
+	cutoff_frequency_ = 12.5;
+}
+
+BWFilter2::BWFilter2(double cutoff_frequency)
+{
+	BWFilter2();
+
+	cutoff_frequency_ = cutoff_frequency;
 }
 
 BWFilter2::~BWFilter2()
@@ -24,7 +31,6 @@ double BWFilter2::compute(double input, ros::Duration dt)
   if (dt == ros::Duration(0.0) || std::isnan(input) || std::isinf(input))
     return 0.0;
 
-  //double cutoff_frequency = 15; //TODO make cutoff frequency parameter
   double c;
 
   input_[2] = input_[1];
@@ -53,6 +59,17 @@ double BWFilter2::compute(double input, ros::Duration dt)
 	output_[1] = output_[0];
 	output_[0] = (1/(1+c*c+1.414*c))*(input_[2]+2*input_[1]+input_[0]-(c*c-1.414*c+1)*output_[2]-(-2*c*c+2)*output_[1]);
   }
+
+  ROS_INFO_STREAM(
+		  "c= " << c <<
+		  ", dt= " << dt.toSec() <<
+		  ", i0= " << input_[0] <<
+		  ", i1= " << input_[1] <<
+		  ", i2= " << input_[2] <<
+		  ", o0= " << output_[0] <<
+		  ", o1= " << output_[1] <<
+		  ", o2= " << output_[2]
+		  );
 
   return output_[0];
 }
