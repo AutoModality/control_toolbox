@@ -53,6 +53,7 @@ include_directories(
 
 add_library(${PROJECT_NAME}
   src/pid.cpp
+  src/filters.cpp
   src/pid_gains_setter.cpp
   src/sine_sweep.cpp
   src/dither.cpp

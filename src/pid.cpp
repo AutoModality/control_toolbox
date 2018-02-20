@@ -312,6 +312,35 @@ double Pid::computeCommand(double error, ros::Duration dt)
   return computeCommand(error, error_dot, dt);
 }
 
+//2018-02-17, revise the PID to have low pass filter for the D term
+double Pid::computeCommand(double error, ros::Duration dt, bool d_low_pass, filters::BWFilter2 bw_filter2)
+{
+
+  if (dt == ros::Duration(0.0) || std::isnan(error) || std::isinf(error))
+    return 0.0;
+
+  double error_dot = d_error_;
+  double error_dot_filtered = 0;
+
+  // Calculate the derivative error
+  if (dt.toSec() > 0.0)
+  {
+    error_dot = (error - p_error_last_) / dt.toSec();
+    p_error_last_ = error;
+  }
+
+  error_dot_filtered = bw_filter2.compute(error_dot, dt);
+
+  if (d_low_pass)
+  {
+	  return computeCommand(error, error_dot_filtered, dt);
+  }
+  else
+  {
+	  return computeCommand(error, error_dot, dt);
+  }
+}
+
 double Pid::updatePid(double error, ros::Duration dt)
 {
   return -computeCommand(error, dt);

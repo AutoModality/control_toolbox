@@ -36,6 +36,7 @@
 #define CONTROL_TOOLBOX__FILTERS_H
 
 #include <algorithm>
+#include <ros/ros.h>
 
 namespace filters
 {
@@ -53,6 +54,21 @@ namespace filters
     {
         return alpha*current_raw_value + (1-alpha)*last_smoothed_value;
     }
- }
+
+class BWFilter2
+{
+public:
+	BWFilter2();
+	~BWFilter2();
+
+	double compute(double input, ros::Duration dt);
+
+private:
+	double input_[3];
+	double output_[3];
+	double cutoff_frequency_;
+};
+
+}
 
 #endif
