@@ -60,7 +60,7 @@ double BWFilter2::compute(double input, ros::Duration dt)
 	output_[0] = (1/(1+c*c+1.414*c))*(input_[2]+2*input_[1]+input_[0]-(c*c-1.414*c+1)*output_[2]-(-2*c*c+2)*output_[1]);
   }
 
-  ROS_INFO_STREAM(
+  ROS_DEBUG_STREAM(
 		  "c= " << c <<
 		  ", dt= " << dt.toSec() <<
 		  ", i0= " << input_[0] <<
