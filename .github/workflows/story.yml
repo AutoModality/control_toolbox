@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Package
-        uses: AutoModality/action-package-debian-ros@v1.1.0
+        id: package
+        uses: AutoModality/action-package-debian-ros@BB-780/control-depends
 
 
