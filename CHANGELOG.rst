@@ -2,6 +2,20 @@
 Changelog for package control_toolbox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.17.0 (2020-01-10)
+-------------------
+- Changed trace to DBEUG. [dan hennage]
+- Fixed reference bug; added cutoff param; set cutoff default to 12.5.
+  [dan hennage]
+- Populate the input to the low pass filter of D term. [Tao Wang]
+- Forget the fitler.cpp file. [Tao Wang]
+- Add class BWFilter2, the Butterworth 2 order low pass filter for D
+  term of the PID controller. [Tao Wang]
+- Update README.md. [Bence Magyar]
+
+
+
+
 1.16.0 (2017-11-30)
 -------------------
 * switched to industrial_ci
