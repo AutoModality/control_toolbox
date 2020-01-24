@@ -1,0 +1,15 @@
+#!/bin/bash
+PACKAGE=control_toolbox
+source /opt/ros/kinetic/setup.bash
+echo "We are $(pwd)"
+CURDIR=$(readlink -f $(pwd))
+mkdir -p catkin_ws/src/${PACKAGE}
+WORKSPACE=$(readlink -f ./catkin_ws)
+cp -r {cfg,include,scripts,src,srv,test} catkin_ws/src/${PACKAGE}
+cp package.xml  catkin_ws/src/${PACKAGE}
+cp CMakeLists.txt  catkin_ws/src/${PACKAGE}
+cd catkin_ws
+catkin init --workspace .
+echo "PWD: $(pwd)"
+catkin config --install
+
