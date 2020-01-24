@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Package
         id: package
-        uses: AutoModality/action-package-debian-ros@BB-780/control-depends
+        uses: AutoModality/action-package-debian-ros@v1.2.1
 
 
