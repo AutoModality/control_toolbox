@@ -1,1 +1,12 @@
 src/control_toolbox
+*.cfgc
+cfg/cpp/
+srv_gen/
+catkin_ws
+debian/files
+debian/*.log
+debian/*.substvars
+debian/ros-kinetic-control-toolbox
+debian/source
+debian/watch
+debian/*-stamp
