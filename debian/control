@@ -9,5 +9,6 @@ Standards-Version: 3.9.2
 Package: ros-melodic-am-control-toolbox
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libtinyxml-dev, ros-melodic-cmake-modules, ros-melodic-control-msgs, ros-melodic-dynamic-reconfigure, ros-melodic-message-runtime, ros-melodic-realtime-tools, ros-melodic-roscpp, ros-melodic-std-msgs, ros-melodic-control-msgs
+Replaces: ros-melodic-control-toolbox
 Description: The control toolbox contains modules that are useful across all controllers.
 
