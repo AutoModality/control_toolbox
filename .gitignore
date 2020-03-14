@@ -6,7 +6,7 @@ catkin_ws
 debian/files
 debian/*.log
 debian/*.substvars
-debian/ros-kinetic-am-control-toolbox
+debian/ros-*-am-control-toolbox
 debian/source
 debian/watch
 debian/*-stamp
