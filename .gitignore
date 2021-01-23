@@ -1,4 +1,3 @@
-src/control_toolbox
 *.cfgc
 cfg/cpp/
 srv_gen/
@@ -10,3 +9,4 @@ debian/ros-*-am-control-toolbox
 debian/source
 debian/watch
 debian/*-stamp
+debian/ros-melodic-control-toolbox

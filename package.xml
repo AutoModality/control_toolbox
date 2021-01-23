@@ -1,6 +1,6 @@
 <package>
   <name>control_toolbox</name>
-  <version>1.16.0</version>
+  <version>2.0.1</version>
   <description>The control toolbox contains modules that are useful across all controllers.</description>
   <maintainer email="sachinc@willowgarage.com">Sachin Chitta</maintainer>
   <maintainer email="bence.magyar.robotics@gmail.com">Bence Magyar</maintainer>
@@ -36,6 +36,6 @@
   <run_depend>realtime_tools</run_depend>
 
   <export>
-    <cpp lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lcontrol_toolbox" cflags="-I${prefix}/include -I${prefix}/include/control_toolbox/eigen2"/>
+    <cpp cflags="-I${prefix}/include -I${prefix}/include/control_toolbox/eigen2" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lcontrol_toolbox" />
   </export>
 </package>

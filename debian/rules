@@ -19,14 +19,17 @@ export PKG_CONFIG_PATH=/opt/ros/melodic/lib/pkgconfig
 export DEB_CXXFLAGS_MAINT_APPEND=-DNDEBUG
 
 %:
-	dh $@ 
+	dh $@ -v --buildsystem=cmake
 
 override_dh_auto_configure:
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	if [ -f "/opt/ros/melodic/setup.sh" ]; then . "/opt/ros/melodic/setup.sh"; fi && \
-	dh_auto_configure
+	dh_auto_configure -- \
+		-DCATKIN_BUILD_BINARY_PACKAGE="1" \
+		-DCMAKE_INSTALL_PREFIX="/opt/ros/melodic" \
+		-DCMAKE_PREFIX_PATH="/opt/ros/melodic"
 
 override_dh_auto_build:
 	# In case we're installing to a non-standard location, look for a setup.sh
@@ -48,7 +51,7 @@ override_dh_shlibdeps:
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	if [ -f "/opt/ros/melodic/setup.sh" ]; then . "/opt/ros/melodic/setup.sh"; fi && \
-	dh_shlibdeps -l$(CURDIR)/debian/ros-melodic-am-utils//opt/ros/melodic/lib/
+	dh_shlibdeps -l$(CURDIR)/debian/ros-melodic-control-toolbox//opt/ros/melodic/lib/
 
 override_dh_auto_install:
 	# In case we're installing to a non-standard location, look for a setup.sh
@@ -56,3 +59,11 @@ override_dh_auto_install:
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
 	if [ -f "/opt/ros/melodic/setup.sh" ]; then . "/opt/ros/melodic/setup.sh"; fi && \
 	dh_auto_install
+
+
+override_dh_builddeb:
+	dh_builddeb --destdir=.
+
+override_dh_auto_clean:
+	rm -f *.*deb
+	rm -rf obj-*

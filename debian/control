@@ -1,31 +1,12 @@
-Source: ros-melodic-am-control-toolbox
+Source: ros-melodic-control-toolbox
 Section: misc
-Priority: extra
+Priority: optional
 Maintainer: Sachin Chitta <sachinc@willowgarage.com>
-Build-Depends: debhelper (>= 9.0.0), 
-    libtinyxml-dev, 
-    ros-melodic-catkin (>= 0.5.68), 
-    ros-melodic-cmake-modules, 
-    ros-melodic-control-msgs, 
-    ros-melodic-dynamic-reconfigure, 
-    ros-melodic-message-generation, 
-    ros-melodic-realtime-tools, 
-    ros-melodic-roscpp, 
-    ros-melodic-std-msgs, 
+Build-Depends: debhelper (>= 9.0.0), libtinyxml-dev, ros-melodic-catkin (>= 0.5.68), ros-melodic-cmake-modules, ros-melodic-control-msgs, ros-melodic-dynamic-reconfigure, ros-melodic-message-generation, ros-melodic-realtime-tools, ros-melodic-roscpp, ros-melodic-std-msgs
 Homepage: http://ros.org/wiki/control_toolbox
 Standards-Version: 3.9.2
 
-Package: ros-melodic-am-control-toolbox
+Package: ros-melodic-control-toolbox
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, 
-    libtinyxml-dev, 
-    ros-melodic-cmake-modules, 
-    ros-melodic-control-msgs,
-    ros-melodic-dynamic-reconfigure, 
-    ros-melodic-message-runtime, 
-    ros-melodic-realtime-tools, 
-    ros-melodic-roscpp, 
-    ros-melodic-std-msgs, 
-Replaces: ros-melodic-control-toolbox
+Depends: ${shlibs:Depends}, ${misc:Depends}, libtinyxml-dev, ros-melodic-cmake-modules, ros-melodic-control-msgs, ros-melodic-dynamic-reconfigure, ros-melodic-message-runtime, ros-melodic-realtime-tools, ros-melodic-roscpp, ros-melodic-std-msgs
 Description: The control toolbox contains modules that are useful across all controllers.
-
